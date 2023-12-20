@@ -21,71 +21,41 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { MatMenu, MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+const modules: any[] = [
+  CommonModule,
+  MatSidenavModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatListModule,
+  MatInputModule,
+  MatTooltipModule,
+  MatGridListModule,
+  MatCardModule,
+  MatButtonToggleModule,
+  MatSelectModule,
+  MatExpansionModule,
+  ScrollingModule,
+  MatSortModule,
+  MatTableModule,
+  MatSlideToggleModule,
+  MatDividerModule,
+  MatProgressBarModule,
+  MatDialogModule,
+  OverlayModule,
+  MatMenuModule,
+  MatChipsModule,
+  MatSnackBarModule,
+];
 
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    CommonModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatListModule,
-    MatInputModule,
-    MatTooltipModule,
-    MatGridListModule,
-    MatCardModule,
-    MatButtonToggleModule,
-    MatSelectModule,
-    MatExpansionModule,
-    ScrollingModule,
-    MatSortModule,
-    MatTableModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatProgressBarModule,
-    MatDialogModule,
-    OverlayModule,
-    MatMenuModule,
-    MatChipsModule,
-    MatSnackBarModule,
-    MatMenuModule,
-  ],
-  exports: [
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatListModule,
-    MatInputModule,
-    MatTooltipModule,
-    MatGridListModule,
-    MatCardModule,
-    MatButtonToggleModule,
-    MatSelectModule,
-    MatExpansionModule,
-    ScrollingModule,
-    MatSortModule,
-    MatTableModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatProgressBarModule,
-    MatDialogModule,
-    OverlayModule,
-    MatMenuModule,
-    MatChipsModule,
-    MatSnackBarModule,
-    MatMenuModule,
-  ]
+  imports: [...modules],
+  exports: [...modules]
 })
 export class MaterialModule { }
