@@ -4,8 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import{MatToolbarModule} from '@angular/material/toolbar';
+import { MaterialModule } from './material/material.module';
+import { HomeModule } from './layout/home/home.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    HttpClientModule,
+    FormsModule,
+    MaterialModule,
+    HomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

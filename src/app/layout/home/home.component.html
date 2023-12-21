@@ -1,1 +1,10 @@
-<p>home works!</p>
+<ng-container *ngIf="tracks.length === 0">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</ng-container>
+<ul>
+    <li *ngFor="let track of tracks">
+        {{
+            track.title
+        }}
+    </li>
+</ul>
