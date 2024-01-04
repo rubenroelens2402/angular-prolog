@@ -14,11 +14,14 @@ export class HomeComponent implements OnInit {
 
   tracks : ITrack[] = [];
 
+  title = 'Angular Material';
+
   constructor(private trackService: TrackService){}
 
   ngOnInit(): void {
     this.trackService.getTracks().subscribe(tracks => {
       this.tracks = tracks;
+      console.log(this.tracks);
     });
   }
 

@@ -11,7 +11,7 @@ export class TrackService {
   constructor(private http : HttpClient) { }
 
   getTracks() : Observable<ITrack[]> {
-    return this.http.get<ITrack[]>('http://localhost:7071/api/tracks').pipe(
+    return this.http.get<ITrack[]>('/api/tracks').pipe(
       tap(data => console.log(data)),
       map((tracks : any) => tracks.map((track: ITrack) => ({
         id: track.id,
