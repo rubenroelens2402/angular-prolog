@@ -1,19 +1,57 @@
-<ng-container *ngIf="tracks; else loading">
-  <div class="row">
-    <div class="col-md-4" *ngFor="let track of tracks">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ track.title }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>{{ track.album }}</p>
-        </mat-card-content>
-      </mat-card>
+<div class="container mx-auto m-8">
+
+  <!-- Search Section -->
+  <div class="mb-8">
+    <!-- Search input and button -->
+    <div class="flex items-center">
+      <input type="text" placeholder="Search..." class="p-2 border border-gray-300 rounded-l">
+      <button class="bg-blue-500 text-white p-2 rounded-r">Search</button>
     </div>
   </div>
-</ng-container>
-<ng-template #loading>
-  <div class="loading">
-    <mat-spinner></mat-spinner>
-  </div>
-</ng-template>
+
+  <!-- Characters Section -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">Characters</h2>
+    <!-- Display characters here -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Character cards go here -->
+      <ng-container *ngFor="let character of characters">
+        <div class="bg-white p-4 shadow-md rounded-md">
+          {{ character.name }}
+        </div>
+      </ng-container>
+      <!-- Add more character cards as needed -->
+    </div>
+  </section>
+
+  <!-- Episodes Section -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">Episodes</h2>
+    <!-- Display episodes here -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Episode cards go here -->
+      <ng-container *ngFor="let episode of episodes">
+        <div class="bg-white p-4 shadow-md rounded-md">
+          {{ episode.name }}
+        </div>
+      </ng-container>
+      <!-- Add more episode cards as needed -->
+    </div>
+  </section>
+
+  <!-- Locations Section -->
+  <section>
+    <h2 class="text-2xl font-bold mb-4">Locations</h2>
+    <!-- Display locations here -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Location cards go here -->
+      <ng-container *ngFor="let location of locations">
+        <div class="bg-white p-4 shadow-md rounded-md">
+          {{ location.name }}
+        </div>
+      </ng-container>
+      <!-- Add more location cards as needed -->
+    </div>
+  </section>
+
+</div>

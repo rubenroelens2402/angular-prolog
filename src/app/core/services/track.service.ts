@@ -8,12 +8,22 @@ import { Observable, delay, map, tap } from 'rxjs';
 })
 export class TrackService {
 
-  constructor(private http : HttpClient) { }
+  tracks: Observable<ITrack[]> = new Observable<ITrack[]>();
 
-  getTracks() : Observable<ITrack[]> {
+  constructor(private http: HttpClient) { }
+
+  getTracks(): Observable<ITrack[]> {
+    if (!this.tracks) {
+      this.tracks = this.getTracksHttp();
+    }
+    return this.tracks;
+
+  }
+
+  getTracksHttp(): Observable<ITrack[]> {
     return this.http.get<ITrack[]>('/api/tracks').pipe(
       tap(data => console.log(data)),
-      map((tracks : any) => tracks.map((track: ITrack) => ({
+      map((tracks: any) => tracks.map((track: ITrack) => ({
         id: track.id,
         title: track.title,
         artists: track.artists,
@@ -24,6 +34,7 @@ export class TrackService {
         bpm: track.bpm,
         key: track.key
       }))
-    ));
+      ));
   }
+
 }
