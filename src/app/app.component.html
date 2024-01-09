@@ -1,6 +1,16 @@
-<mat-toolbar>
+<mat-toolbar class="custom-toolbar">
   <button mat-button routerLink="/home">Home</button>
   <span class="spacer"></span>
-  <button mat-button routerLink="/profile">Profile</button>
+  <!-- search bar -->
+  <div class="flex items-center p-8">
+    <input type="text" placeholder="Search..." class="p-2 border border-gray-300 rounded">
+  </div>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/episodes" class="ps-2">Episodes</button>
+  <button mat-button routerLink="/characters">Characters</button>
+  <button mat-button routerLink="/locations">Locations</button>
+  <button mat-button routerLink="/profile">
+    <mat-icon>account_circle</mat-icon>
+  </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

@@ -1,57 +1,80 @@
 <div class="container mx-auto m-8">
-
   <!-- Search Section -->
   <div class="mb-8">
     <!-- Search input and button -->
-    <div class="flex items-center">
-      <input type="text" placeholder="Search..." class="p-2 border border-gray-300 rounded-l">
-      <button class="bg-blue-500 text-white p-2 rounded-r">Search</button>
+    <h2 class="text-2xl font-bold mb-4">Welcome to the Rick and Morty Universe! 🚀</h2>
+    <p>
+      Dive into the fascinating world of Rick Sanchez, Morty Smith, and a myriad of eccentric characters from the
+      multiverse with our Rick and Morty API. Explore detailed information about episodes, characters, and locations
+      featured in the animated series. Whether you're a seasoned fan or a newcomer, this API provides a gateway to the
+      vast and quirky dimensions of the Rick and Morty universe. Start your adventure now and uncover the secrets that
+      span across time and space!
+    </p>
+    <div class="flex items-center justify-around">
+      <!-- Repeat this div for each image -->
+      <div *ngFor="let image of images" class="m-2">
+        <img [src]="image" class="object-center w-full h-36" />
+      </div>
     </div>
   </div>
 
   <!-- Characters Section -->
   <section class="mb-8">
     <h2 class="text-2xl font-bold mb-4">Characters</h2>
+    <p>Characters in Rick and Morty refer to the diverse array of animated beings that populate the show's multiverse.
+      These can range from humans to aliens, robots, and other fantastical entities. Each character has its own unique
+      traits, personality, and role in the storyline, contributing to the show's humor, satire, and narrative
+      complexity.</p>
     <!-- Display characters here -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Character cards go here -->
-      <ng-container *ngFor="let character of characters">
-        <div class="bg-white p-4 shadow-md rounded-md">
-          {{ character.name }}
-        </div>
-      </ng-container>
-      <!-- Add more character cards as needed -->
-    </div>
-  </section>
+    <app-my-table [dataSource]="characterDataSource" [displayedColumns]="characterDisplayedColumns"></app-my-table>
 
+  </section>
+  <div class="flex items-center justify-around">
+    <!-- Repeat this div for each image -->
+    <div *ngFor="let image of images2" class="m-2">
+      <img [src]="image" class="object-center w-full h-36" />
+    </div>
+  </div>
   <!-- Episodes Section -->
   <section class="mb-8">
     <h2 class="text-2xl font-bold mb-4">Episodes</h2>
+    <p>
+      Episodes are individual segments or installments of the Rick and Morty television series. Each episode typically
+      features a self-contained story or plotline, often involving the titular characters, Rick Sanchez and his grandson
+      Morty Smith, embarking on various interdimensional adventures. Episodes explore a wide range of themes, genres,
+      and satirical commentary, making Rick and Morty known for its unpredictable and inventive storytelling.
+    </p>
     <!-- Display episodes here -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Episode cards go here -->
-      <ng-container *ngFor="let episode of episodes">
-        <div class="bg-white p-4 shadow-md rounded-md">
-          {{ episode.name }}
-        </div>
-      </ng-container>
-      <!-- Add more episode cards as needed -->
+    <app-my-table [dataSource]="episodeDataSource" [displayedColumns]="episodeDisplayedColumns"></app-my-table>
+
+
+  </section>
+  <div class="flex items-center justify-around">
+    <!-- Repeat this div for each image -->
+    <div *ngFor="let image of images3" class="m-2">
+      <img [src]="image" class="object-center w-full h-36" />
     </div>
+  </div>
+  <!-- Locations Section -->
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">Locations</h2>
+    <p>
+      Locations in Rick and Morty encompass the various settings and worlds visited by the characters during their
+      interdimensional escapades. These locations can include planets, alternate realities, and bizarre dimensions, each
+      with its own unique environment, inhabitants, and challenges. The show's exploration of different locations adds
+      to its imaginative and unpredictable nature, offering viewers a glimpse into the vast and often absurd multiverse.
+    </p>
+    <!-- Display locations here -->
+    <app-my-table [dataSource]="locationDataSource" [displayedColumns]="locationDisplayedColumns"></app-my-table>
+
   </section>
 
-  <!-- Locations Section -->
-  <section>
-    <h2 class="text-2xl font-bold mb-4">Locations</h2>
-    <!-- Display locations here -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Location cards go here -->
-      <ng-container *ngFor="let location of locations">
-        <div class="bg-white p-4 shadow-md rounded-md">
-          {{ location.name }}
-        </div>
-      </ng-container>
-      <!-- Add more location cards as needed -->
+  <div class="flex items-center justify-around">
+    <!-- Repeat this div for each image -->
+    <div *ngFor="let image of images4" class="m-2">
+      <img [src]="image" class="object-center w-full h-36" />
     </div>
-  </section>
+  </div>
 
 </div>
+<footer class="center"><small>(All textual content has been generated by ChatGPT)</small></footer>

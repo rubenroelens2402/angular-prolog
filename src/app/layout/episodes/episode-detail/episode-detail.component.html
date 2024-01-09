@@ -1,0 +1,27 @@
+<div class="p-6 rounded-lg shadow-md">
+    <!-- row -->
+    <div class="flex row mb-4">
+        <button (click)="navigateBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h2 class="text-2xl font-bold mb-4">{{ episode.name }}</h2>
+    </div>
+
+    <div class="flex flex-wrap -mx-2 mb-4">
+        <div class="w-full md:w-1/2 px-2 mb-4">
+            <p><strong>ID:</strong> {{ episode.id }}</p>
+            <p><strong>Air Date:</strong> {{ episode.air_date }}</p>
+            <p><strong>Episode:</strong> {{ episode.episode }}</p>
+            <p><strong>Created:</strong> {{ episode.created }}</p>
+        </div>
+        <div class="w-full md:w-1/2 px-2 mb-4">
+            <p><strong>Characters:</strong></p>
+            <ul>
+                <li *ngFor="let character of characters" class="mb-2">
+                    <button mat-button (click)="navigateToCharacterDetail(character.id)" routerLinkActive="router-link-active" >{{ character.name }}</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p><strong>URL:</strong> <a href="{{ episode.url }}" target="_blank">{{ episode.url }}</a></p>
+</div>

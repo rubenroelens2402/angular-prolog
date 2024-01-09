@@ -9,6 +9,10 @@ import { FormsModule } from '@angular/forms';
 import{MatToolbarModule} from '@angular/material/toolbar';
 import { MaterialModule } from './material/material.module';
 import { HomeModule } from './layout/home/home.module';
+import { SharedModule } from './shared/shared.module';
+import { EpisodesModule } from './layout/episodes/episodes.module';
+import { CharactersModule } from './layout/characters/characters.module';
+import { LocationsModule } from './layout/locations/locations.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { HomeModule } from './layout/home/home.module';
     FormsModule,
     MaterialModule,
     HomeModule,
+    EpisodesModule,
+    CharactersModule,
+    LocationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

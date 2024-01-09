@@ -6,6 +6,7 @@ import { ICharacter } from '../../core/interfaces/character';
 import { CharacterService } from '../../core/services/character.service';
 import { LocationService } from '../../core/services/location.service';
 import { ILocation } from '../../core/interfaces/location';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,26 @@ export class HomeComponent implements OnInit {
 
   private _destroying$ = new Subject<void>();
 
+  // EPISODES
+  episodeDataSource = new MatTableDataSource<IEpisode>();
+  episodeDisplayedColumns: string[] = ['id', 'name', 'air_date', 'episode', 'created'];
   episodes : IEpisode[] = [];
+
+  // CHARACTERS
+  characterDataSource = new MatTableDataSource<ICharacter>();
+  characterDisplayedColumns: string[] = ['id', 'name', 'status', 'species', 'type', 'gender', 'created'];
   characters: ICharacter[] = [];
+
+  // LOCATIONS
+  locationDataSource = new MatTableDataSource<ILocation>();
+  locationDisplayedColumns : string[] = ['id', 'name', 'type', 'dimension', 'created']
   locations : ILocation[] = [];
+
+  // IMAGES
+  images: string[] = [];
+  images2: string[] = [];
+  images3: string[] = [];
+  images4: string[] = [];
 
   title = 'Angular Material';
 
@@ -30,14 +48,30 @@ export class HomeComponent implements OnInit {
   currentPage : number = 1;
 
   ngOnInit(): void {
-    this.episodeService.getEpisodes(1).pipe(takeUntil(this._destroying$)).subscribe(episodes => {
+    this.episodeService.getAllEpisodes().pipe(takeUntil(this._destroying$)).subscribe(episodes => {
+      this.episodeDataSource.data = episodes;
       this.episodes = episodes;
     });
-    this.characterService.getCharacters(1).pipe(takeUntil(this._destroying$)).subscribe(characters => {
+    this.characterService.getAllCharacters().pipe(takeUntil(this._destroying$)).subscribe(characters => {
+      this.characterDataSource.data = characters;
       this.characters = characters;
     });
-    this.locationService.getLocations(1).pipe(takeUntil(this._destroying$)).subscribe(locations => {  
+    this.locationService.getAllLocations().pipe(takeUntil(this._destroying$)).subscribe(locations => {  
+      this.locationDataSource.data = locations;
       this.locations = locations;
     });
+    this.divideImages();
+  }
+
+  private divideImages() {
+    Array.from(Array(3).keys()).forEach(i => this.images.push(`assets/images/rickmorty${i}.png`)); // 0 1 2
+    Array.from(Array(3).keys()).forEach(i => this.images2.push(`assets/images/rickmorty${i + 3}.png`)); // 3 4 5
+    Array.from(Array(3).keys()).forEach(i => this.images3.push(`assets/images/rickmorty${i + 6}.png`)); // 6 7 8
+    Array.from(Array(2).keys()).forEach(i => this.images4.push(`assets/images/rickmorty${i + 9}.png`)); // 9 10 
+  }
+
+  ngOnDestroy(): void {
+    this._destroying$.next();
+    this._destroying$.complete();
   }
 }

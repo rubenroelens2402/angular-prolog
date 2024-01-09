@@ -1,0 +1,18 @@
+<div class="container mx-auto m-8">
+    <!-- Search Section -->
+    <h2 class="text-2xl font-bold mb-4">Locations</h2>
+
+    <div class="flex items-center pb-8">
+        <input type="text" placeholder="Search..." class="p-2 border border-gray-300 rounded-l">
+        <button class="bg-blue-500 text-white p-2 rounded-r">Search</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-8">
+        <!-- Episode cards go here -->
+        <ng-container *ngFor="let location of locations">
+            <div class="bg-white p-4 shadow-md rounded-md cursor-pointer" (click)="navigateToDetail(location.id)">
+                {{ location.name }}
+            </div>
+        </ng-container>
+        <!-- Add more episode cards as needed -->
+    </div>
+</div>
