@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, combineLatest, takeUntil } from 'rxjs';
 import { EpisodeService } from '../../core/services/episode.service';
 import { IEpisode } from '../../core/interfaces/episode';
 import { ICharacter } from '../../core/interfaces/character';
@@ -50,31 +50,15 @@ export class HomeComponent implements OnInit {
   currentPage : number = 1;
 
   ngOnInit(): void {
-    const episodesKey = 'episodesRequest';
-    this.performanceService.startTiming(episodesKey);
-    this.episodeService.getAllEpisodes().pipe(takeUntil(this._destroying$)).subscribe(episodes => {
+    const totalRequestTimeKey = 'totalRequestTime';
+    this.performanceService.startTiming(totalRequestTimeKey);
+    combineLatest([this.episodeService.getAllEpisodes(), this.characterService.getAllCharacters(), this.locationService.getAllLocations()]).pipe(takeUntil(this._destroying$)).subscribe(([episodes, characters, locations]) => {
       this.episodeDataSource.data = episodes;
-      this.episodes = episodes;
-      this.performanceService.stopTiming(episodesKey);
-    });
-    const charactersKey = 'charactersRequest';
-    this.performanceService.startTiming(charactersKey);
-    this.characterService.getAllCharacters().pipe(takeUntil(this._destroying$)).subscribe(characters => {
       this.characterDataSource.data = characters;
-      this.characters = characters;
-      this.performanceService.stopTiming(charactersKey);
-    });
-    const locationsKey = 'locationsRequest';
-    this.performanceService.startTiming(locationsKey);
-    this.locationService.getAllLocations().pipe(takeUntil(this._destroying$)).subscribe(locations => {  
       this.locationDataSource.data = locations;
-      this.locations = locations;
-      this.performanceService.stopTiming(locationsKey);
+      this.performanceService.stopTiming(totalRequestTimeKey);
     });
-    const imagesKey = 'imagesRequest';
-    this.performanceService.startTiming(imagesKey);
     this.divideImages();
-    this.performanceService.stopTiming(imagesKey);
   }
 
   private divideImages() {

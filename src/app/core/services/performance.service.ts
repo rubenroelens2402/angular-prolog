@@ -14,13 +14,15 @@ export class PerformanceService {
     this.timings[key] = window.performance.now();
   }
 
-  stopTiming(key: string) {
+  stopTiming(key: string) : number {
     const start = this.timings[key];
     if (start) {
       const end = window.performance.now();
       console.log(`Timing for ${key}: ${end - start}ms`);
+      return end - start;
     } else {
       console.log(`No timing found for ${key}`);
+      return 0;
     }
   }
 
