@@ -7,6 +7,7 @@ import { CharacterService } from '../../core/services/character.service';
 import { LocationService } from '../../core/services/location.service';
 import { ILocation } from '../../core/interfaces/location';
 import { MatTableDataSource } from '@angular/material/table';
+import { PerformanceService } from '../../core/services/performance.service';
 
 @Component({
   selector: 'app-home',
@@ -43,24 +44,37 @@ export class HomeComponent implements OnInit {
   constructor(
     private episodeService: EpisodeService, 
     private characterService: CharacterService,
-    private locationService: LocationService){}
+    private locationService: LocationService,
+    private performanceService: PerformanceService){}
 
   currentPage : number = 1;
 
   ngOnInit(): void {
+    const episodesKey = 'episodesRequest';
+    this.performanceService.startTiming(episodesKey);
     this.episodeService.getAllEpisodes().pipe(takeUntil(this._destroying$)).subscribe(episodes => {
       this.episodeDataSource.data = episodes;
       this.episodes = episodes;
+      this.performanceService.stopTiming(episodesKey);
     });
+    const charactersKey = 'charactersRequest';
+    this.performanceService.startTiming(charactersKey);
     this.characterService.getAllCharacters().pipe(takeUntil(this._destroying$)).subscribe(characters => {
       this.characterDataSource.data = characters;
       this.characters = characters;
+      this.performanceService.stopTiming(charactersKey);
     });
+    const locationsKey = 'locationsRequest';
+    this.performanceService.startTiming(locationsKey);
     this.locationService.getAllLocations().pipe(takeUntil(this._destroying$)).subscribe(locations => {  
       this.locationDataSource.data = locations;
       this.locations = locations;
+      this.performanceService.stopTiming(locationsKey);
     });
+    const imagesKey = 'imagesRequest';
+    this.performanceService.startTiming(imagesKey);
     this.divideImages();
+    this.performanceService.stopTiming(imagesKey);
   }
 
   private divideImages() {
