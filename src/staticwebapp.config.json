@@ -13,12 +13,6 @@
             "headers": {
                 "cache-control": "no-store, no-cache, max-age=0"
             }
-        },
-        {
-            "route": "/assets/images/*",
-            "headers": {
-                "cache-control": "no-store, no-cache, max-age=0"
-            }
         }
     ]
 }
