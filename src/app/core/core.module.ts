@@ -11,4 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  // make sure only one insance of singleton (services) exists
+  constructor(@Optional() @SkipSelf() core: CoreModule) {
+    if (core) {
+      throw new Error("You should import services module only in the root module")
+    }
+  }
+}
