@@ -32,11 +32,11 @@ import { HttpCachingInterceptor } from './core/services/http-caching-interceptor
     SharedModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpCachingInterceptor,
-      multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: HttpCachingInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })
