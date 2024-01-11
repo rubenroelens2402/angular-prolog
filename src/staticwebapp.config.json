@@ -11,7 +11,7 @@
         {
             "route": "/*",
             "headers": {
-                "cache-control": "no-store, no-cache, max-age=0"
+                "cache-control":  "public, max-age=2592000"  // 1 month (in seconds)
             }
         }
     ]
