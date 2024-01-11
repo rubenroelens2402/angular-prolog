@@ -7,9 +7,6 @@ import { ICharacter } from '../interfaces/character';
   providedIn: 'root'
 })
 export class CharacterService {
-  pipe(arg0: MonoTypeOperatorFunction<unknown>) {
-    throw new Error('Method not implemented.');
-  }
 
   constructor(private http: HttpClient) { }
 
