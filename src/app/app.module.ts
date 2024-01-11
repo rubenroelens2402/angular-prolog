@@ -4,15 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import{MatToolbarModule} from '@angular/material/toolbar';
 import { MaterialModule } from './material/material.module';
 import { HomeModule } from './layout/home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { EpisodesModule } from './layout/episodes/episodes.module';
 import { CharactersModule } from './layout/characters/characters.module';
 import { LocationsModule } from './layout/locations/locations.module';
+import { HttpCachingInterceptor } from './core/services/http-caching-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,13 @@ import { LocationsModule } from './layout/locations/locations.module';
     LocationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpCachingInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
